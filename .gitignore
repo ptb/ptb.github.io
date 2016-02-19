@@ -36,9 +36,12 @@
 .VolumeIcon.icns
 ._*
 .apdisk
+.bundle/
+.cache/
 .dropbox/
 .dropbox.cache/
 .fseventsd/
+.sass-cache/
 .svn/
 
 /Network/*
@@ -46,6 +49,7 @@
 /Volumes/*
 /afs/*
 /automount/*
+/build/*
 /cores/*
 /dev/*
 /home/*
