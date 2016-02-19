@@ -49,7 +49,7 @@ activate :relative_assets
 configure :development do
   set :sass, cache: false, line_comments: false, style: :expanded
 
-  activate :livereload
+  # activate :livereload
 end
 
 configure :build do
