@@ -1,13 +1,15 @@
+with_layout false do
+  page '*.atom'
+  page '*.css'
+  page '*.json'
+  page '*.rss'
+  page '*.txt'
+  page '*.xml'
+end
+
 ###
 # Page options, layouts, aliases and proxies
 ###
-
-# Per-page layout changes:
-#
-# With no layout
-page '/*.xml', layout: false
-page '/*.json', layout: false
-page '/*.txt', layout: false
 
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
