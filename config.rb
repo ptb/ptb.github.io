@@ -15,7 +15,7 @@ exts.each do |ext|
 end
 
 Slim::Engine.set_options attr_quote: "'", :format => :xhtml, pretty: true, sort_attrs: true, shortcut: {'@' => {attr: 'role'}, '#' => {attr: 'id'}, '.' => {attr: 'class'}, '%' => {attr: 'itemprop'}, '&' => {tag: 'input', attr: 'type'}}
-set :sass, cache: false, line_comments: true, style: :expanded
+set :sass, cache: false, line_comments: false, style: :expanded
 
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
