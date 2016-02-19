@@ -1,0 +1,21 @@
+#!/bin/sh
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ $BRANCH == 'middleman' ]; then
+  git stash save --keep-index --include-untracked
+  bundle exec middleman build --clean --verbose
+  git checkout master
+  find $PWD -maxdepth 1 -not \( -path "$PWD" -o -path "$PWD/.git" -o -path "$PWD/build" -o -path "$PWD/.gitignore" \) -print0 | xargs -0 rm -r
+  mv $PWD/build/* $PWD/
+  git add --all
+  git commit --message='' --allow-empty-message
+  git checkout $BRANCH
+  git stash pop --index
+  if git ls-remote --exit-code github &> /dev/null; then
+    git push github middleman
+    git push github master
+  fi
+fi
+if git ls-remote --exit-code origin &> /dev/null; then
+  git push --all
+  git push --tags
+fi
