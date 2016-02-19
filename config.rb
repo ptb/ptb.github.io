@@ -1,15 +1,7 @@
-with_layout false do
-  page '*.atom'
-  page '*.css'
-  page '*.json'
-  page '*.rss'
-  page '*.txt'
-  page '*.xml'
+exts = %w[atom css json rss txt xml]
+exts.each do |ext|
+  page "*.#{ext}", layout: false
 end
-
-###
-# Page options, layouts, aliases and proxies
-###
 
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
