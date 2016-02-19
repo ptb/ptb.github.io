@@ -16,10 +16,18 @@ end
 
 Slim::Engine.set_options attr_quote: "'", :format => :xhtml, pretty: true, sort_attrs: true, shortcut: {'@' => {attr: 'role'}, '#' => {attr: 'id'}, '.' => {attr: 'class'}, '%' => {attr: 'itemprop'}, '&' => {tag: 'input', attr: 'type'}}
 
+# set :relative_links, true
+activate :relative_assets
+# activate :asset_hash
+
+activate :directory_indexes
+set :index_file, 'index.html'
+
 # Reload the browser automatically whenever files change
 configure :development do
-  activate :livereload
   set :sass, cache: false, line_comments: false, style: :expanded
+  
+  activate :livereload
 end
 
 configure :build do
