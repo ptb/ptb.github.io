@@ -1,3 +1,14 @@
+Time.zone = 'America/New_York'
+
+set :css_dir, 'css' if File.directory?('source/css/')
+set :images_dir, 'img' if File.directory?('source/img/')
+set :js_dir, 'js' if File.directory?('source/js/')
+
+set :partials_dir, 'partials' if File.directory?('source/partials/')
+
+ignore 'intros/*' if File.directory?('source/intros/')
+
+# set :layout, 'minimum'
 exts = %w[atom css json rss txt xml]
 exts.each do |ext|
   page "*.#{ext}", layout: false
