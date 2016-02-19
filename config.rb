@@ -41,6 +41,7 @@ Slim::Engine.set_options attr_quote: "'", :format => :xhtml, pretty: true, sort_
 
 set :index_file, 'index.html'
 set :relative_links, true
+set :strip_index_file, false
 
 activate :directory_indexes
 activate :relative_assets
