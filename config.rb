@@ -14,6 +14,29 @@ exts.each do |ext|
   page "*.#{ext}", layout: false
 end
 
+activate :blog do |blog|
+  blog.prefix = 'blog'
+  blog.layout = 'blog'
+
+  blog.sources = ':title.html'
+  blog.default_extension = '.slim'
+  blog.summary_separator = /(READMORE)/
+
+  blog.permalink = ':title.html'
+
+  blog.tag_template = 'articles.html'
+  blog.taglink = ':tag/index.html'
+
+  blog.calendar_template = 'articles.html'
+  blog.year_link = 'index.html'
+  blog.month_link = ':year/:month/index.html'
+  blog.day_link = ':year/:month/:day/index.html'
+
+  blog.paginate = true
+  blog.per_page = 3
+  blog.page_link = 'page-:num'
+end
+
 Slim::Engine.set_options attr_quote: "'", :format => :xhtml, pretty: true, sort_attrs: true, shortcut: {'@' => {attr: 'role'}, '#' => {attr: 'id'}, '.' => {attr: 'class'}, '%' => {attr: 'itemprop'}, '&' => {tag: 'input', attr: 'type'}}
 
 set :index_file, 'index.html'
