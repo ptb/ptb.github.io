@@ -16,7 +16,8 @@ end
 
 Slim::Engine.set_options attr_quote: "'", :format => :xhtml, pretty: true, sort_attrs: true, shortcut: {'@' => {attr: 'role'}, '#' => {attr: 'id'}, '.' => {attr: 'class'}, '%' => {attr: 'itemprop'}, '&' => {tag: 'input', attr: 'type'}}
 
-set :sass, cache: false, style: :compressed
+# set :sass, cache: false, style: :compressed
+set :sass, cache: false, style: :nested
 
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
