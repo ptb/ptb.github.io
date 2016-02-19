@@ -15,38 +15,23 @@ exts.each do |ext|
 end
 
 Slim::Engine.set_options attr_quote: "'", :format => :xhtml, pretty: true, sort_attrs: true, shortcut: {'@' => {attr: 'role'}, '#' => {attr: 'id'}, '.' => {attr: 'class'}, '%' => {attr: 'itemprop'}, '&' => {tag: 'input', attr: 'type'}}
-set :sass, cache: false, line_comments: false, style: :expanded
-
-# With alternative layout
-# page "/path/to/file.html", layout: :otherlayout
-
-# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
-# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
-#  which_fake_page: "Rendering a fake page with a local variable" }
-
-# General configuration
 
 # Reload the browser automatically whenever files change
 configure :development do
   activate :livereload
+  set :sass, cache: false, line_comments: false, style: :expanded
 end
 
-###
-# Helpers
-###
-
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
-
-# Build-specific configuration
 configure :build do
-  # Minify CSS on build
-  # activate :minify_css
+  Slim::Engine.set_default_options pretty: false
 
-  # Minify Javascript on build
+  # activate :minify_css
+  set :sass, cache: false, line_comments: false, style: :compressed
+
   # activate :minify_javascript
+
+  activate :asset_hash
+
+  activate :minify_html, remove_quotes: false, simple_boolean_attributes: false
+  # activate :gzip, exts: %w(.atom .css .html .js .rss .svg .txt .xhtml .xml .eot .otf .ttf)
 end
