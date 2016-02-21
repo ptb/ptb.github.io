@@ -55,7 +55,7 @@ activate :blog do |blog|
   blog.page_link = 'page/{num}.html'
 end
 
-set :index_file, 'index.html'
+# set :index_file, 'index.html'
 activate :directory_indexes
 
 configure :development do
