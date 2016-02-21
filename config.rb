@@ -12,27 +12,47 @@ end
 
 Time.zone = 'America/New_York'
 
+# activate :autoprefixer, browsers: ['last 2 versions'], cascade: false
+
 activate :blog do |blog|
-  blog.prefix = 'blog'
+  # blog.name = nil
+  # blog.prefix = nil
+
+  # blog.custom_collections = {}
+  # blog.publish_future_dated = false
+  # blog.preserve_locale = false
+
+  blog.sources = 'blog/{title}.html'
+  blog.default_extension = '.slim'
+  # blog.summary_separator = /(READMORE)/
+
   blog.layout = 'blog'
 
-  blog.sources = ':title.html'
-  blog.default_extension = '.slim'
-  blog.summary_separator = /(READMORE)/
+  blog.permalink = '{title}.html'
 
-  blog.permalink = ':title.html'
+  # blog.generate_tag_pages = true
+  blog.tag_template = 'tag.html'
+  blog.taglink = '{tag}.html'
 
-  blog.tag_template = 'articles.html'
-  blog.taglink = ':tag/index.html'
+  blog.generate_year_pages = false
+  blog.generate_month_pages = false
+  blog.generate_day_pages = false
 
-  blog.calendar_template = 'articles.html'
-  blog.year_link = 'index.html'
-  blog.month_link = ':year/:month/index.html'
-  blog.day_link = ':year/:month/:day/index.html'
+  # blog.calendar_template = nil
+  # blog.year_template = nil
+  # blog.month_template = nil
+  # blog.day_template = nil
+
+  blog.year_link = nil
+  blog.month_link = nil
+  blog.day_link = nil
+
+  # blog.summary_generator = nil
+  # blog.summary_length = 250
 
   blog.paginate = true
   blog.per_page = 3
-  blog.page_link = 'page-:num'
+  blog.page_link = 'page/{num}.html'
 end
 
 set :index_file, 'index.html'
